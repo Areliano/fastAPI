@@ -3,7 +3,7 @@ from typing import List
 from app.schemas.item import Item, ItemCreate
 from app import storage
 
-router = APIRouter(prefix="/items", tags=["items"])
+router = APIRouter(prefix="/items", tags=["our items"])
 
 
 @router.get("/", response_model=List[Item])
