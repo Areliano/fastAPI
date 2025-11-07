@@ -27,3 +27,13 @@ def delete_item(item_id: int):
     if not deleted:
         raise HTTPException(status_code=404, detail="Item not found")
     return {"message": "Item deleted successfully"}
+
+
+@router.patch("/{item_id}")
+def update_item(item_id: int, item: ItemCreate):
+    existing_item = storage.get_item(item_id)
+    if not existing_item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    updated_item = Item(id=item_id, **item.dict())
+    storage.items_db[item_id] = updated_item
+    return updated_item

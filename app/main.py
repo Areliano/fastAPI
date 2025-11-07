@@ -9,6 +9,7 @@ app = FastAPI(title="Fatma Hussein's Application")
 app.include_router(items.router)
 
 
+
 #root path
 @app.get("/")
 async def read_root():
